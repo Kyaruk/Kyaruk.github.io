@@ -1,4 +1,3 @@
-baseURL = 'https://Kyaruk.github.io/'
+baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = 'ananke'
