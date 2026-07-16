@@ -1,0 +1,13 @@
+{{ define "hero" }}
+<section class="hero" style="background-image:url('{{ "assets/hero.jpg" | relURL }}')">
+  <div class="hero-overlay">
+    <h1 class="hero-title" data-i18n="ach_hero_title">成果</h1>
+    <p class="hero-subtitle" data-i18n="ach_hero_sub">论文发表、专利与软件著作权</p>
+  </div>
+</section>
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "publications" . }}
+  {{ partial "patents" . }}
+{{ end }}

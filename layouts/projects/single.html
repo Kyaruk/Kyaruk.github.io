@@ -1,0 +1,12 @@
+{{ define "hero" }}
+<section class="hero" style="background-image:url('{{ "assets/hero.jpg" | relURL }}')">
+  <div class="hero-overlay">
+    <h1 class="hero-title" data-i18n="proj_hero_title">项目</h1>
+    <p class="hero-subtitle" data-i18n="proj_hero_sub">过往参与的科研课题与竞赛项目</p>
+  </div>
+</section>
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "projects" . }}
+{{ end }}

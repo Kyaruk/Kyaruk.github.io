@@ -1,0 +1,48 @@
+baseURL = "https://zkzhu.github.io/"
+languageCode = "zh-CN"
+title = "朱祖坤 | Kyaruk"
+hasCJKLanguage = true
+
+[params]
+  name = "朱祖坤"
+  ename = "Kyaruk"
+  avatar = "/assets/touxiang.png"
+  school = "北京航空航天大学"
+  edu_ms = "硕士 · 网络空间安全学院"
+  edu_bs = "本科 · 计算机学院"
+  tagline = "AI安全"
+  bio = "具有大模型应用与安全保护的开发经验，能熟练使用Transformer、BERT等通用大语言模型，深入理解对抗攻击领域的前沿动态与核心机制。熟练掌握多门编程语言，如Python、Java、C/C++、Java Script、Dart等。具有网页端和移动端的开发经验，能熟练使用flutter、vue等前端开发框架。"
+  email = "kyaruchu@gmail.com"
+  location = "北京 / Beijing, China"
+  [params.social]
+    github = "https://github.com/Kyaruk"
+    scholar = "https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=aV0BjTEAAAAJ&gmla=AO4B3jvTDcX1QI5zm7_t-sa1A-dZ1lkz3F9MUrIh0V4uGB7s3tZfo7pmdB28DO6uRDlpxVxgGQ7nu_HZrOe2y0w0awHq9MqAdt-DRwmWyW0"
+    zhihu = ""
+    linkedin = ""
+
+# 顶部导航（i18n key 用于语言切换）
+[[menu.main]]
+  name = "主页"
+  url = "/"
+  weight = 1
+  params = { i18n = "nav_home" }
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 2
+  params = { i18n = "nav_about" }
+[[menu.main]]
+  name = "成果"
+  url = "/achievements/"
+  weight = 3
+  params = { i18n = "nav_achievements" }
+[[menu.main]]
+  name = "项目"
+  url = "/projects/"
+  weight = 4
+  params = { i18n = "nav_projects" }
+[[menu.main]]
+  name = "博客"
+  url = "/blog/"
+  weight = 5
+  params = { i18n = "nav_blog" }

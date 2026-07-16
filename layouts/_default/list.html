@@ -1,0 +1,20 @@
+{{ define "hero" }}
+<section class="hero" style="background-image:url('{{ "assets/hero.jpg" | relURL }}')">
+  <div class="hero-overlay">
+    <h1 class="hero-title" data-i18n="blog_hero_title">博客</h1>
+    <p class="hero-subtitle" data-i18n="blog_hero_sub">调研笔记 · 技术随笔 · 生活碎碎念</p>
+  </div>
+</section>
+{{ end }}
+
+{{ define "main" }}
+  <div class="post-list">
+    {{ range .Pages }}
+    <article class="post-item">
+      <a href="{{ .RelPermalink }}"><h2>{{ .Title }}</h2></a>
+      <div class="post-meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}</div>
+      <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+{{ end }}

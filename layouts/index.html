@@ -1,0 +1,52 @@
+{{ define "main" }}
+  <!-- ===== 区块：关于 / About ===== -->
+  <section id="about" class="block">
+    <h2 class="block-title" data-i18n="sec_about">关于</h2>
+    <p data-i18n="about_body">具备大模型应用与安全保护的开发经验，熟悉 Transformer、BERT 等通用大语言模型，深入对抗攻击领域前沿；熟练掌握 Python、Java、C/C++、JavaScript、Dart 等语言，有 Web 与移动端（Flutter、Vue）开发经验。</p>
+  </section>
+
+  <!-- ===== 区块：教育经历 / Education（仅主页展示，不在导航跳转中） ===== -->
+  <section id="education" class="block edu-block">
+    <h2 class="block-title" data-i18n="sec_education">教育经历</h2>
+    <div class="edu-list">
+
+      <div class="edu-row">
+        <div class="edu-main">
+          <div class="edu-degree" data-i18n="edu_ms_degree">硕士 · 网络空间安全学院 · 北京航空航天大学</div>
+          <div class="edu-meta" data-i18n="edu_ms_meta">网络与信息安全 ｜ 导师：高莹 副教授 ｜ GPA 3.84/4.0 ｜ 2023.09 – 2026.06</div>
+        </div>
+        <img class="edu-logo" src="/assets/badges/beihang.svg" alt="北航校徽">
+      </div>
+
+      <div class="edu-row">
+        <div class="edu-main">
+          <div class="edu-degree" data-i18n="edu_bs_degree">本科 · 计算机学院 · 北京航空航天大学</div>
+          <div class="edu-meta" data-i18n="edu_bs_meta">计算机科学与技术 ｜ GPA 3.67/4.0 ｜ 2019.09 – 2023.06</div>
+        </div>
+        <img class="edu-logo" src="/assets/badges/beihang.svg" alt="北航校徽">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 区块：成果 / Achievements（主页摘要 + 跳转到 /achievements/） ===== -->
+  <section id="achievements" class="block">
+    <h2 class="block-title" data-i18n="sec_achievements">成果</h2>
+    {{ partial "publications" . }}
+    {{ partial "patents" . }}
+  </section>
+
+  <!-- ===== 区块：项目 / Projects（主页摘要 + 跳转到 /projects/） ===== -->
+  <section id="projects" class="block">
+    <h2 class="block-title" data-i18n="sec_projects">项目</h2>
+    {{ partial "projects" . }}
+  </section>
+
+  <!-- ===== 区块：博客入口 / Blog ===== -->
+  <section id="blog" class="block">
+    <h2 class="block-title" data-i18n="sec_blog">博客</h2>
+    <p data-i18n="blog_desc">调研笔记 · 技术随笔 · 生活碎碎念（混合），支持标签分类。</p>
+    <p><a class="btn" href="{{ "/blog/" | relURL }}">前往博客 →</a></p>
+    <p class="muted" data-i18n="blog_note">写新文章：在 content/blog/ 下新建 .md 文件，或用命令 hugo new blog/文章名.md。</p>
+  </section>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "hero" }}
+<section class="hero about-hero" style="background-image:url('{{ "assets/hero.jpg" | relURL }}')">
+  <div class="hero-overlay">
+    {{ with .Site.Params.avatar }}<img class="about-hero-avatar" src="{{ . | relURL }}" alt="avatar">{{ end }}
+    <h1 class="about-hero-name">{{ .Site.Params.name }}{{ with .Site.Params.ename }} <span class="s-en">/ {{ . }}</span>{{ end }}</h1>
+    {{ with .Site.Params.tagline }}<p class="about-hero-tag">{{ . }}</p>{{ end }}
+    <p class="about-hero-school" data-i18n="sb_school">北京航空航天大学</p>
+    <p class="about-hero-degree" data-i18n="sb_edu_ms">硕士 · 网络空间安全学院</p>
+    <p class="about-hero-loc" data-i18n="sb_location">北京 / Beijing, China</p>
+    <ul class="about-hero-links">{{ partial "profile-links" . }}</ul>
+  </div>
+</section>
+{{ end }}
+
+{{ define "main" }}
+  <section class="about-intro">
+    <p class="typewriter" data-i18n="about_page_intro">我的名字是Kyaruk</p>
+  </section>
+{{ end }}
