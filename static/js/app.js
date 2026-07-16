@@ -19,7 +19,7 @@
       sb_location: '北京 / Beijing, China',
       about_body: '具备大模型应用与安全保护的开发经验，熟悉 Transformer、BERT 等通用大语言模型，深入对抗攻击领域前沿；熟练掌握 Python、Java、C/C++、JavaScript、Dart 等语言，有 Web 与移动端（Flutter、Vue）开发经验。',
       about_note: '（这段为占位简介，可改为你自己的话；也可放到 config.toml 的 params.bio 后由模板读取。）',
-      about_page_intro: '我的名字是Kyaruk',
+      about_page_intro: '陌生的朋友你好呀，欢迎来到朱祖坤（Kyaruk）的个人主页！我是朱祖坤，你也可以叫我 Kyaruk。',
       edu_ms_degree: '硕士 · 网络空间安全学院 · 北京航空航天大学',
       edu_ms_meta: '网络与信息安全 ｜ 导师：高莹 副教授 ｜ GPA 3.84/4.0 ｜ 2023.09 – 2026.06',
       edu_bs_degree: '本科 · 计算机学院 · 北京航空航天大学',
@@ -65,7 +65,7 @@
       sb_location: 'Beijing, China',
       about_body: 'Experienced in LLM applications and security; familiar with Transformer, BERT and adversarial attacks. Skilled in Python, Java, C/C++, JavaScript, Dart, with Web and mobile (Flutter, Vue) development experience.',
       about_note: '(This is placeholder bio text; replace it with your own, or set params.bio in config.toml.)',
-      about_page_intro: 'My name is Kyaruk',
+      about_page_intro: 'Hello, stranger! Welcome to the personal homepage of Zukun Zhu (Kyaruk)! My name is Zukun Zhu, and you can also call me Kyaruk.',
       edu_ms_degree: 'M.S. · School of Cyber Science and Technology · Beihang University',
       edu_ms_meta: 'Information Security · Advisor: Ying Gao (Assoc. Prof.) · GPA 3.84/4.0 · 2023.09 – 2026.06',
       edu_bs_degree: 'B.S. · School of Computer Science · Beihang University',
@@ -159,16 +159,24 @@
      ★ 想改文案：直接改下面 TYPEWRITER_PHRASES 的 zh / en 两个数组即可（中英文一一对应） */
   var TYPEWRITER_PHRASES = {
     zh: [
-      '我的名字是Kyaruk。',
-      '我目前就读于北京航空航天大学，网络空间安全学院。',
-      '我的研究方向是隐私保护机器学习与联邦学习安全。',
-      '欢迎来到我的个人主页，慢慢逛逛吧～'
+      '陌生的朋友你好呀，欢迎来到朱祖坤（Kyaruk）的个人主页！',
+      '我是朱祖坤，你也可以叫我 Kyaruk。',
+      '我毕业于北京航空航天大学，主要研究方向包括人工智能安全、隐私保护机器学习以及大语言模型安全等领域。',
+      'Kyaruk 这个名字来源于 “Kyaru + k”。其中，Kyaru 是《公主连结！Re:Dive》中的黑猫角色“凯露”，而 k 则取自“坤”的首字母。',
+      '我的 MBTI 类型是 INTJ。',
+      '我热衷于探索各种电子游戏，尤其喜欢《英雄联盟》、各类 Roguelike 游戏以及合作闯关类游戏。🎮',
+      '我也喜欢 Citywalk，喜欢和重要的人一起在不同城市漫步、聊天，在慢节奏的探索中感受城市的温度，也为自己充电。🔋',
+      '未来，希望有一天能够拥有一只萨摩耶和一只西伯利亚森林猫。🐶🐱'
     ],
     en: [
-      'My name is Kyaruk.',
-      'I am a M.S. student at Beihang University, School of Cyber Science and Technology.',
-      'My research focuses on privacy-preserving ML and federated learning security.',
-      'Welcome to my personal homepage — feel free to look around.'
+      'Hello, stranger! Welcome to the personal homepage of Zukun Zhu (Kyaruk)!',
+      'My name is Zukun Zhu, and you can also call me Kyaruk.',
+      'I graduated from Beihang University, and my research interests include AI security, privacy-preserving machine learning, and large language model safety.',
+      'The name "Kyaruk" comes from "Kyaru + k". Kyaru refers to Kyaru, the black cat character from Princess Connect! Re:Dive, while "k" is the first letter of "Kun", which is part of my Chinese name.',
+      'My MBTI type is INTJ.',
+      'I enjoy playing various types of video games, especially League of Legends, Roguelike games, and cooperative adventure games. 🎮',
+      'I also enjoy Citywalk — wandering through different cities with someone important to me, having conversations along the way, and recharging myself through these slow and meaningful moments. 🔋',
+      'In the future, I hope to have a Samoyed and a Siberian Forest Cat of my own. 🐶🐱'
     ]
   };
 
@@ -198,7 +206,7 @@
           deleting = true;
           twTimer = setTimeout(tick, 2200);   // 整句打完后停顿展示（毫秒，可调）
         } else {
-          twTimer = setTimeout(tick, 110);     // 逐字打出速度（毫秒，可调）
+          twTimer = setTimeout(tick, 70);      // 逐字打出速度（毫秒，可调）
         }
       } else {
         // 退格

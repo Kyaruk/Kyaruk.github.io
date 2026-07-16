@@ -1,1 +1,23 @@
-*.dll
+# Hugo build output
+/public/
+/resources/
+.hugo_build.lock
+
+# macOS / filesystem metadata (AppleDouble resource forks)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# WorkBuddy workspace memory (local only)
+.workbuddy/
+
+# Logs
+*.log
