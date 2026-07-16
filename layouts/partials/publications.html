@@ -1,70 +1,23 @@
 <h3 class="sub-title" data-i18n="pub_heading">论文</h3>
 <div class="pub-cards">
-
+  {{ $pubs := where .Site.RegularPages "Section" "achievements" }}
+  {{ range sort $pubs ".Weight" "asc" }}
   <article class="pub-card">
     <div class="pub-main">
-      <div class="pub-authors">Ying Gao, Huanghao Deng, <strong>Zukun Zhu</strong>, Xiaofeng Chen, Yuxin Xie, Pei Duan, Peixuan Chen.</div>
-      <div class="pub-title">PEAFOWL: Private Entity Alignment in Multi-Party Privacy-Preserving Machine Learning.</div>
-      <span class="pub-venue">IEEE Transactions on Information Forensics and Security (TIFS), 2025, 20: 2706-2720. (CCF A)</span>
-      <div class="pub-links"><a href="#">PDF</a> · <a href="#">Code</a></div>
+      <div class="pub-title"><a class="stretched-link" href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+      <div class="pub-authors">{{ .Params.authors | markdownify }}</div>
+      <span class="pub-venue">{{ .Params.venue }}</span>
+      <div class="pub-links">
+        {{ if .Params.pdf }}<a href="{{ .Params.pdf }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+        {{ if and .Params.pdf .Params.code }}<span class="link-sep">·</span>{{ end }}
+        {{ if .Params.code }}<a href="{{ .Params.code }}" target="_blank" rel="noopener">Code</a>{{ end }}
+      </div>
     </div>
-    <a class="pub-fig" href="/assets/pubs/peafowl.png" target="_blank" rel="noopener" title="核心 pipeline 图（待补充）">
-      <img src="/assets/pubs/peafowl.png" alt="PEAFOWL pipeline figure" onerror="this.remove()">
-      <span class="fig-hint">核心 pipeline 图<br><small>assets/pubs/peafowl.png</small></span>
+    <a class="pub-fig" href="{{ .RelPermalink }}" title="查看详情">
+      <img src="{{ .Params.image }}" alt="{{ .Title }} pipeline figure" onerror="this.remove()">
+      <span class="fig-hint">核心 pipeline 图<br><small>查看详情</small></span>
     </a>
   </article>
-
-  <article class="pub-card">
-    <div class="pub-main">
-      <div class="pub-authors">Ying Gao, Yuxin Xie, Huanghao Deng, <strong>Zukun Zhu</strong>.</div>
-      <div class="pub-title">Gradient Inversion Attack in Federated Learning: Exposing Text Data through Discrete Optimization.</div>
-      <span class="pub-venue">Proc. 31st Int. Conf. on Computational Linguistics (COLING), 2025: 2582-2591. (CCF B)</span>
-      <div class="pub-links"><a href="#">PDF</a> · <a href="#">Code</a></div>
-    </div>
-    <a class="pub-fig" href="/assets/pubs/gia-fl.png" target="_blank" rel="noopener" title="核心 pipeline 图（待补充）">
-      <img src="/assets/pubs/gia-fl.png" alt="GIA-FL pipeline figure" onerror="this.remove()">
-      <span class="fig-hint">核心 pipeline 图<br><small>assets/pubs/gia-fl.png</small></span>
-    </a>
-  </article>
-
-  <article class="pub-card">
-    <div class="pub-main">
-      <div class="pub-authors">Ying Gao, Yuxin Xie, Huanghao Deng, <strong>Zukun Zhu</strong>, Yiyu Zhang.</div>
-      <div class="pub-title">A privacy-preserving data alignment framework for vertical federated learning.</div>
-      <span class="pub-venue">电子与信息学报, 2024, 46(8): 3419-3427. (中文 CCF T1)</span>
-      <div class="pub-links"><a href="#">PDF</a> · <a href="#">Code</a></div>
-    </div>
-    <a class="pub-fig" href="/assets/pubs/vfl-align.png" target="_blank" rel="noopener" title="核心 pipeline 图（待补充）">
-      <img src="/assets/pubs/vfl-align.png" alt="VFL-alignment pipeline figure" onerror="this.remove()">
-      <span class="fig-hint">核心 pipeline 图<br><small>assets/pubs/vfl-align.png</small></span>
-    </a>
-  </article>
-
-  <article class="pub-card">
-    <div class="pub-main">
-      <div class="pub-authors">Ziqi Yuan, Qingyun Sun, Haoyi Zhou, <strong>Zukun Zhu</strong>, Jianxin Li.</div>
-      <div class="pub-title">MultiNetAD: Multiplex Network-Based Anomaly Access Detection Featuring Semantic Hierarchies.</div>
-      <span class="pub-venue">Proc. 2024 SIAM Int. Conf. on Data Mining (SDM), 2024: 661-669. (CCF B)</span>
-      <div class="pub-links"><a href="#">PDF</a> · <a href="#">Code</a></div>
-    </div>
-    <a class="pub-fig" href="/assets/pubs/multinetad.png" target="_blank" rel="noopener" title="核心 pipeline 图（待补充）">
-      <img src="/assets/pubs/multinetad.png" alt="MultiNetAD pipeline figure" onerror="this.remove()">
-      <span class="fig-hint">核心 pipeline 图<br><small>assets/pubs/multinetad.png</small></span>
-    </a>
-  </article>
-
-  <article class="pub-card">
-    <div class="pub-main">
-      <div class="pub-authors">袁子淇, 孙庆赟, 周号益, <strong>朱祖坤</strong>, 李建欣.</div>
-      <div class="pub-title">MNDetector：基于多层网络的异常访问检测方法.</div>
-      <span class="pub-venue">计算机研究与发展, 2025, 62(3): 765-778. (中文 CCF T1)</span>
-      <div class="pub-links"><a href="#">PDF</a></div>
-    </div>
-    <a class="pub-fig" href="/assets/pubs/mndetector.png" target="_blank" rel="noopener" title="核心 pipeline 图（待补充）">
-      <img src="/assets/pubs/mndetector.png" alt="MNDetector pipeline figure" onerror="this.remove()">
-      <span class="fig-hint">核心 pipeline 图<br><small>assets/pubs/mndetector.png</small></span>
-    </a>
-  </article>
-
+  {{ end }}
 </div>
-<p class="muted" data-i18n="pub_note">提示：朱祖坤 / Zukun Zhu 已加粗；PDF / Code 链接目前是占位 #，拿到地址后替换即可。每张卡片右侧为核心算法 pipeline 图位（矩形），将图放到 static/assets/pubs/ 下对应文件名即可自动显示（支持 .png/.jpg/.pdf/.svg）。</p>
+<p class="muted" data-i18n="pub_note">提示：点击论文卡片进入详情页；PDF / Code 为 None 的条目已自动隐藏对应按钮。</p>

@@ -13,8 +13,8 @@
     {{ range .Pages }}
     <article class="pub-card">
       <div class="pub-main">
+        <div class="pub-title"><a class="stretched-link" href="{{ .RelPermalink }}">{{ .Title }}</a></div>
         <div class="pub-authors">{{ .Params.authors | markdownify }}</div>
-        <div class="pub-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
         <span class="pub-venue">{{ .Params.venue }}</span>
         <div class="pub-links">
           {{ if .Params.pdf }}<a href="{{ .Params.pdf }}" target="_blank" rel="noopener">PDF</a>{{ end }}

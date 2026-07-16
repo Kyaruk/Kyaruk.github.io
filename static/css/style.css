@@ -193,17 +193,22 @@ body{
 /* ===== 论文卡片（更扁平） ===== */
 .pub-cards{display:flex;flex-direction:column;gap:1rem;}
 .pub-card{
-  display:flex;gap:1.2rem;align-items:flex-start;
+  position:relative;
+  display:flex;gap:1.2rem;align-items:flex-start;cursor:pointer;
   border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;
   background:var(--surface);transition:box-shadow .15s ease,border-color .15s ease;
 }
 .pub-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.06);border-color:#d7d7d2;}
+/* 整张卡片可点击跳转详情：用标题链接的 ::after 覆盖整卡 */
+.pub-card .stretched-link::after{
+  content:"";position:absolute;inset:0;z-index:1;
+}
 .pub-main{flex:1;min-width:0;}
 .pub-authors{color:var(--muted);font-size:.92rem;}
 .pub-authors strong{color:var(--text);}
 .pub-title{font-weight:600;font-size:1.02rem;margin:.15rem 0 .25rem;line-height:1.45;}
 .pub-venue{display:block;color:var(--text);font-size:.9rem;font-style:normal;}
-.pub-links{font-size:.85rem;margin-top:.35rem;}
+.pub-links{font-size:.85rem;margin-top:.35rem;position:relative;z-index:2;}
 .pub-links a{color:var(--accent);text-decoration:none;margin-right:.5rem;}
 .pub-links a:hover{text-decoration:underline;}
 .pub-fig{
