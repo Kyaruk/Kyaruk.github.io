@@ -1,6 +1,6 @@
 baseURL = "https://zkzhu.github.io/"
 languageCode = "zh-CN"
-title = "朱祖坤 | Kyaruk"
+title = "Kyaruk · 个人主页"
 hasCJKLanguage = true
 
 [params]

@@ -1,13 +1,25 @@
-{{ define "hero" }}
-<section class="hero" style="background-image:url('{{ "assets/hero.jpg" | relURL }}')">
-  <div class="hero-overlay">
-    <h1 class="hero-title" data-i18n="ach_hero_title">成果</h1>
-    <p class="hero-subtitle" data-i18n="ach_hero_sub">论文发表、专利与软件著作权</p>
-  </div>
-</section>
-{{ end }}
-
 {{ define "main" }}
-  {{ partial "publications" . }}
-  {{ partial "patents" . }}
+<article class="pub-detail">
+  <a class="back-link" href="{{ "/achievements/" | relURL }}">
+    <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+    </svg>
+    <span data-i18n="back_to_achievements">返回成果</span>
+  </a>
+
+  <h1 class="pub-detail-title">{{ .Title }}</h1>
+  <p class="pub-detail-authors">{{ .Params.authors | markdownify }}</p>
+  <p class="pub-detail-venue">{{ .Params.venue }}</p>
+
+  <h2 class="pub-detail-section-title" data-i18n="abstract_label">摘要</h2>
+  <div class="pub-detail-abstract">
+    <img class="pub-detail-image" src="{{ .Params.image }}" alt="pipeline figure" onerror="this.style.display='none'">
+    {{ .Content }}
+  </div>
+
+  <div class="pub-detail-links">
+    {{ if .Params.pdf }}<a class="btn" href="{{ .Params.pdf }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+    {{ if .Params.code }}<a class="btn" href="{{ .Params.code }}" target="_blank" rel="noopener">Code</a>{{ end }}
+  </div>
+</article>
 {{ end }}

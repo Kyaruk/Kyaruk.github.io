@@ -7,7 +7,8 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Params.name }}{{ end }}</title>
-  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}?v=20260716n">
+  <link rel="icon" type="image/png" href="{{ "assets/favicon.png" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}?v=20260716o">
   <script>
     /* 在首屏绘制前应用主题，避免闪烁 */
     (function(){
@@ -97,6 +98,6 @@
     <p>© {{ now.Format "2006" }} {{ .Site.Params.name }}. <span data-i18n="footer_built">由 Hugo 构建</span>.</p>
   </footer>
 
-  <script src="{{ "js/app.js" | relURL }}?v=20260716n" defer></script>
+  <script src="{{ "js/app.js" | relURL }}?v=20260716o" defer></script>
 </body>
 </html>

@@ -290,6 +290,34 @@ body{
 .typewriter.typed .tw-cursor{animation:none;opacity:0;}
 @keyframes tw-blink{50%{opacity:0;}}
 
+.pub-title a{color:var(--text);text-decoration:none;}
+.pub-title a:hover{color:var(--accent);}
+
+/* ===== 论文详情页 ===== */
+.pub-detail{position:relative;}
+.back-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  color:var(--muted);text-decoration:none;font-size:.9rem;
+  margin-bottom:1.2rem;
+}
+.back-link:hover{color:var(--accent);}
+.back-icon{width:18px;height:18px;}
+.pub-detail-title{font-size:1.55rem;margin:0 0 .35rem;line-height:1.4;}
+.pub-detail-authors{color:var(--muted);font-size:.95rem;margin:0 0 .25rem;}
+.pub-detail-authors strong{color:var(--text);}
+.pub-detail-venue{color:var(--text);font-size:.9rem;margin:0 0 1.4rem;font-style:normal;}
+.pub-detail-section-title{font-size:1.1rem;margin:1.6rem 0 .7rem;}
+.pub-detail-abstract{
+  font-size:1rem;line-height:1.8;
+  overflow:hidden;
+}
+.pub-detail-abstract::after{content:"";display:block;clear:both;}
+.pub-detail-image{
+  float:right;width:320px;max-width:45%;margin:0 0 1rem 1.5rem;
+  border-radius:8px;border:1px solid var(--line);background:var(--surface);
+}
+.pub-detail-links{margin-top:2rem;display:flex;gap:.8rem;}
+
 /* ===== 页脚 ===== */
 .site-footer{
   max-width:var(--maxw);margin:2rem auto 0;padding:1.5rem 1.2rem;
@@ -314,4 +342,5 @@ body{
   .patent-status{align-self:flex-start;}
   .project-card{flex-direction:column;}
   .project-date{align-self:flex-start;}
+  .pub-detail-image{width:100%;max-width:100%;margin:0 0 1rem 0;float:none;}
 }

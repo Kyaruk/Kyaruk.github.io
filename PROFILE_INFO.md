@@ -73,15 +73,35 @@
 ### 实际内容
 我给你论文信息，你按照你的格式要求填一下，需要什么信息你上网查，查不到再问我。
 
-- Ying Gao, Huanghao Deng, **Zukun Zhu**, Xiaofeng Chen, Yuxin Xie, Pei Duan, Peixuan Chen. PEAFOWL: Private Entity Alignment in Multi-Party Privacy-Preserving Machine Learning[J]. IEEE Transactions on Information Forensics and Security (TIFS). 2025, 20: 2706-2720. (CCF A)
+1. Ying Gao, Huanghao Deng, **Zukun Zhu**, Xiaofeng Chen, Yuxin Xie, Pei Duan, Peixuan Chen. PEAFOWL: Private Entity Alignment in Multi-Party Privacy-Preserving Machine Learning[J]. IEEE Transactions on Information Forensics and Security (TIFS). 2025, 20: 2706-2720. (CCF A)
 
-- Ying Gao, Yuxin Xie, Huanghao Deng, **Zukun Zhu**. Gradient Inversion Attack in Federated Learning: Exposing Text Data through Discrete Optimization[A]. Proceedings of the 31st International Conference on Computational Linguistics (COLING)[C]. 2025: 2582-2591. (CCF B)
+   pdf: https://ieeexplore.ieee.org/abstract/document/10887259
 
-- Ying Gao, Yuxin Xie, Huanghao Deng, **Zukun Zhu**, Yiyu Zhang. A privacy-preserving data alignment framework for vertical federated learning[J]. 电子与信息学报, 2024, 46(8): 3419-3427. (中文CCF T1)
+   code: https://github.com/HangeTeng/Peafowl
 
-- Ziqi Yuan, Qingyun Sun, Haoyi Zhou, **Zukun Zhu**, Jianxin Li. MultiNetAD: Multiplex Network-Based Anomaly Access Detection Featuring Semantic Hierarchies[A]. Proceedings of the 2024 SIAM International Conference on Data Mining (SDM)[C]. 2024: 661-669. (CCF B)
+2. Ying Gao, Yuxin Xie, Huanghao Deng, **Zukun Zhu**. Gradient Inversion Attack in Federated Learning: Exposing Text Data through Discrete Optimization[A]. Proceedings of the 31st International Conference on Computational Linguistics (COLING)[C]. 2025: 2582-2591. (CCF B)
 
-- 袁子淇, 孙庆赟, 周号益, **朱祖坤**, 李建欣. MNDetector：基于多层网络的异常访问检测方法[J]. 计算机研究与发展. 2025, 62(3): 765-778. (中文CCF T1)
+   pdf: https://aclanthology.org/2025.coling-main.176/
+
+   code: None
+
+3. Ying Gao, Yuxin Xie, Huanghao Deng, **Zukun Zhu**, Yiyu Zhang. A privacy-preserving data alignment framework for vertical federated learning[J]. 电子与信息学报, 2024, 46(8): 3419-3427. (中文CCF T1)
+
+   pdf: https://jeit.ac.cn/en/article/doi/10.11999/JEIT231234?
+
+   code: None
+
+4. Ziqi Yuan, Qingyun Sun, Haoyi Zhou, **Zukun Zhu**, Jianxin Li. MultiNetAD: Multiplex Network-Based Anomaly Access Detection Featuring Semantic Hierarchies[A]. Proceedings of the 2024 SIAM International Conference on Data Mining (SDM)[C]. 2024: 661-669. (CCF B)
+
+   pdf: https://epubs.siam.org/doi/abs/10.1137/1.9781611978032.76
+
+   code: None
+
+5. 袁子淇, 孙庆赟, 周号益, **朱祖坤**, 李建欣. MNDetector：基于多层网络的异常访问检测方法[J]. 计算机研究与发展. 2025, 62(3): 765-778. (中文CCF T1)
+
+   pdf: https://crad.ict.ac.cn/article/doi/10.7544/issn1000-1239.202330735
+
+   code: None
 
 ---
 
