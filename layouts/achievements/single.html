@@ -17,6 +17,8 @@
     {{ .Content }}
   </div>
 
+  <p class="pub-detail-keywords"><strong data-i18n="keywords_label">关键词：</strong>{{ with .Params.keywords }}{{ . }}{{ end }}</p>
+
   <div class="pub-detail-links">
     {{ if .Params.pdf }}<a class="btn" href="{{ .Params.pdf }}" target="_blank" rel="noopener">PDF</a>{{ end }}
     {{ if .Params.code }}<a class="btn" href="{{ .Params.code }}" target="_blank" rel="noopener">Code</a>{{ end }}

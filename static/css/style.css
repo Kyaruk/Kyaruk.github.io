@@ -317,6 +317,7 @@ body{
   overflow:hidden;
 }
 .pub-detail-abstract::after{content:"";display:block;clear:both;}
+.pub-detail-keywords{margin-top:1.4rem;font-size:1rem;line-height:1.8;}
 .pub-detail-image{
   float:right;width:320px;max-width:45%;margin:0 0 1rem 1.5rem;
   border-radius:8px;border:1px solid var(--line);background:var(--surface);
