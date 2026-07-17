@@ -290,7 +290,7 @@ body{
 .about-hero .about-hero-links .s-icon-scholar{color:#fff;}
 
 .about-intro{text-align:center;padding:1rem 0;}
-.about-intro .typewriter{font-size:1.25rem;line-height:1.8;color:var(--text);display:inline-block;min-height:1.6em;}
+.about-intro .typewriter{font-size:1.25rem;line-height:1.8;color:var(--text);display:inline-block;min-height:3.6em;}
 .tw-cursor{display:inline-block;width:2px;height:1.1em;background:var(--text);margin-left:3px;vertical-align:text-bottom;animation:tw-blink 1s step-end infinite;}
 .typewriter.typed .tw-cursor{animation:none;opacity:0;}
 @keyframes tw-blink{50%{opacity:0;}}
@@ -317,6 +317,7 @@ body{
   overflow:hidden;
 }
 .pub-detail-abstract::after{content:"";display:block;clear:both;}
+.pub-detail-keywords{margin-top:1.4rem;font-size:1rem;line-height:1.8;}
 .pub-detail-image{
   float:right;width:320px;max-width:45%;margin:0 0 1rem 1.5rem;
   border-radius:8px;border:1px solid var(--line);background:var(--surface);
