@@ -21,9 +21,9 @@
       about_note: '（这段为占位简介，可改为你自己的话；也可放到 config.toml 的 params.bio 后由模板读取。）',
       about_page_intro: '陌生的朋友你好呀，欢迎来到朱祖坤（Kyaruk）的个人主页！我是朱祖坤，你也可以叫我 Kyaruk。',
       edu_ms_degree: '硕士 · 网络空间安全学院 · 北京航空航天大学',
-      edu_ms_meta: '网络与信息安全 ｜ 导师：高莹 副教授 ｜ GPA 3.84/4.0 ｜ 2023.09 – 2026.06',
+      edu_ms_meta: '网络与信息安全 ｜ 导师：<a href="https://shi.buaa.edu.cn/gaoyingketizu/zh_CN/index/218507/list/index.htm" target="_blank" rel="noopener">高莹 副教授</a> ｜ GPA 3.84/4.0 ｜ 2023.09 – 2026.06',
       edu_bs_degree: '本科 · 计算机学院 · 北京航空航天大学',
-      edu_bs_meta: '计算机科学与技术 ｜ 毕设指导老师：孙庆赟副教授 ｜ GPA 3.67/4.0 ｜ 2019.09 – 2023.06',
+      edu_bs_meta: '计算机科学与技术 ｜ 毕设指导老师：<a href="https://sunqysunqy.github.io" target="_blank" rel="noopener">孙庆赟 副教授</a> ｜ GPA 3.67/4.0 ｜ 2019.09 – 2023.06',
       blog_desc: '调研笔记 · 技术随笔 · 生活碎碎念（混合），支持标签分类。',
       blog_note: '写新文章：在 content/blog/ 下新建 .md 文件，或用命令 hugo new blog/文章名.md。',
       pub_heading: '论文',
@@ -68,9 +68,9 @@
       about_note: '(This is placeholder bio text; replace it with your own, or set params.bio in config.toml.)',
       about_page_intro: 'Hello, stranger! Welcome to the personal homepage of Zukun Zhu (Kyaruk)! My name is Zukun Zhu, and you can also call me Kyaruk.',
       edu_ms_degree: 'M.S. · School of Cyber Science and Technology · Beihang University',
-      edu_ms_meta: 'Information Security · Advisor: Ying Gao (Assoc. Prof.) · GPA 3.84/4.0 · 2023.09 – 2026.06',
+      edu_ms_meta: 'Information Security · Advisor: <a href="https://shi.buaa.edu.cn/gaoyingketizu/zh_CN/index/218507/list/index.htm" target="_blank" rel="noopener">Ying Gao (Assoc. Prof.)</a> · GPA 3.84/4.0 · 2023.09 – 2026.06',
       edu_bs_degree: 'B.S. · School of Computer Science · Beihang University',
-      edu_bs_meta: 'Computer Science and Technology · Thesis Advisor: Qingyun Sun (Assoc. Prof.) · GPA 3.67/4.0 · 2019.09 – 2023.06',
+      edu_bs_meta: 'Computer Science and Technology · Thesis Advisor: <a href="https://sunqysunqy.github.io" target="_blank" rel="noopener">Qingyun Sun (Assoc. Prof.)</a> · GPA 3.67/4.0 · 2019.09 – 2023.06',
       blog_desc: 'Research notes · technical essays · random thoughts (mixed), with tag support.',
       blog_note: 'To write a new post: create a .md file under content/blog/, or run `hugo new blog/post-name.md`.',
       pub_heading: 'Publications',
@@ -141,10 +141,15 @@
   function applyLang() {
     root.setAttribute('lang', lang);
     var dict = I18N[lang] || I18N.zh;
+    // 这两个字段的值里含有 <a> 超链接，需要用 innerHTML 渲染；其余字段保持 textContent 以防注入
+    var HTML_KEYS = { edu_ms_meta: 1, edu_bs_meta: 1 };
     var nodes = document.querySelectorAll('[data-i18n]');
     for (var i = 0; i < nodes.length; i++) {
       var k = nodes[i].getAttribute('data-i18n');
-      if (dict[k] != null) nodes[i].textContent = dict[k];
+      if (dict[k] != null) {
+        if (HTML_KEYS[k]) nodes[i].innerHTML = dict[k];
+        else nodes[i].textContent = dict[k];
+      }
     }
     var lbl = document.getElementById('langLabel');
     if (lbl) lbl.textContent = (lang === 'zh') ? '中文' : 'English';
