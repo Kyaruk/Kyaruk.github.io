@@ -3,6 +3,13 @@ languageCode = "zh-CN"
 title = "Kyaruk · 个人主页"
 hasCJKLanguage = true
 
+[markup.goldmark.renderer]
+  hardWraps = true
+
+# 博客 URL 使用 slug 而非文件名，避免日期命名冲突
+[permalinks]
+  blog = "/blog/:slug/"
+
 [params]
   name = "朱祖坤"
   ename = "Kyaruk"

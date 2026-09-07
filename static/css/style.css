@@ -9,6 +9,7 @@
   --ok:#2e7d52;
   --warn:#b8860b;
   --nav-bg:rgba(253,253,252,.92);
+  --gallery-bg:#f0f0ec;
   --maxw:1200px;
   --gutter:1.2rem;   /* 导航与内容区共用的左右留白，保证「主页」与左侧信息左对齐 */
   --header-h:3.5rem;
@@ -25,6 +26,7 @@
   --ok:#3fb950;
   --warn:#d29922;
   --nav-bg:rgba(13,17,23,.92);
+  --gallery-bg:#1a1a1a;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -280,6 +282,142 @@ body{
 .post-body{margin-top:1rem;}
 /* 详情页（无侧栏）内容限宽：成果/项目/关于 用 900px（line 142），博客正文 780px */
 .layout:not(.has-sidebar) .post-body{max-width:780px;margin:0 auto;}
+/* 博客正文：段落间距大（空行分段），软换行间距小（直接换行） */
+.post-body p{margin:0 0 1.6rem;line-height:1.9;}
+.post-body p br{display:block;content:"";margin-top:.15rem;}
+
+/* 博客详情页标题区 */
+.post-detail{max-width:780px;margin:0 auto;}
+.post-header{margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--line);}
+.post-title{font-size:1.75rem;font-weight:700;margin:0 0 .3rem;line-height:1.3;text-align:left;}
+.post-meta-info{color:var(--muted) !important;font-size:.85rem !important;margin:0;}
+
+/* ===== 博客滑动画廊 ===== */
+.post-gallery{
+  position:relative;
+  margin:1.8rem 0;
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--gallery-bg,#000);
+}
+.gallery-track{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  scroll-behavior:smooth;
+}
+.gallery-track::-webkit-scrollbar{display:none;}
+.gallery-item{
+  flex:0 0 100%;
+  scroll-snap-align:center;
+  margin:0;
+  position:relative;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:var(--gallery-bg,#000);
+}
+.gallery-item img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+}
+.gallery-nav{
+  position:absolute;
+  top:calc(50% - 1rem);
+  transform:translateY(-50%);
+  width:36px;height:36px;
+  border-radius:50%;
+  border:none;
+  background:rgba(0,0,0,.4);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  opacity:0;
+  transition:opacity .2s ease,background .2s ease;
+  z-index:3;
+}
+.gallery-nav:hover{background:rgba(0,0,0,.65);}
+.gallery-nav svg{width:18px;height:18px;}
+.gallery-prev{left:.6rem;}
+.gallery-next{right:.6rem;}
+.post-gallery:hover .gallery-nav{opacity:1;}
+.gallery-nav[disabled]{opacity:0 !important;pointer-events:none;}
+
+/* 底部 UI 区：圆点 + 页码 */
+.gallery-bottom{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.5rem .8rem;
+  z-index:2;
+  pointer-events:none;
+}
+.gallery-dots{
+  display:flex;align-items:center;gap:6px;
+  pointer-events:auto;
+}
+.gallery-dot{
+  width:7px;height:7px;border-radius:50%;
+  border:none;padding:0;margin:0;
+  background:rgba(255,255,255,.35);
+  cursor:pointer;
+  transition:background .2s ease,transform .2s ease;
+  position:relative;
+}
+.gallery-dot::after{
+  content:'';position:absolute;
+  top:-8px;left:-8px;right:-8px;bottom:-8px;
+}
+.gallery-dot.active{background:#fff;}
+.gallery-dot:hover{background:rgba(255,255,255,.7);}
+
+.gallery-indicator{
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  font-size:.75rem;
+  padding:.15rem .5rem;
+  border-radius:999px;
+  pointer-events:none;
+  white-space:nowrap;
+}
+.gallery-sep{margin:0 .15rem;opacity:.6;}
+.gallery-caption{
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+  margin:.5rem 0 1.8rem;
+}
+
+/* ===== 实况照片（Live Photo） ===== */
+.live-photo{position:relative;display:block;width:100%;height:100%;background:var(--gallery-bg,#000);}
+.live-static,.live-video{display:block;width:100%;height:100%;object-fit:contain;position:absolute;top:0;left:0;}
+.live-video{position:absolute;top:0;left:0;opacity:0;transition:opacity .3s ease;}
+.live-photo.playing .live-video{opacity:1;}
+.live-photo.playing .live-static{opacity:0;}
+.live-photo.playing .live-badge{background:rgba(0,0,0,.6);}
+.live-badge{
+  position:absolute;top:.6rem;left:.6rem;
+  background:rgba(0,0,0,.4);color:#fff;
+  font-size:.7rem;font-weight:600;letter-spacing:.08em;
+  padding:.15rem .4rem;border-radius:4px;z-index:3;
+  transition:background .2s ease;
+}
+.live-hint{
+  background:rgba(0,0,0,.45);color:#fff;
+  font-size:.72rem;padding:.15rem .6rem;border-radius:999px;
+  white-space:nowrap;
+  pointer-events:none;
+  opacity:0;transition:opacity .2s ease;
+}
+.post-gallery:hover .live-hint.visible{opacity:1;}
+.live-hint.playing{opacity:0 !important;}
+@media (max-width:768px){
+  .gallery-nav{width:32px;height:32px;}
+  .gallery-nav svg{width:16px;height:16px;}
+}
 
 /* ===== 关于页：Hero 个人名片 + 打字机简介 ===== */
 .about-hero .about-hero-avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.85);display:block;margin:0 auto 1.1rem;box-shadow:0 4px 14px rgba(0,0,0,.25);}

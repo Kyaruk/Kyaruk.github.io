@@ -21,3 +21,9 @@
 
 # Logs
 *.log
+
+# Local tools (image uploader etc., not needed in repo)
+/tools/
+
+# Archive folder (temp images, already uploaded to image hosting)
+/archive/

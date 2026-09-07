@@ -13,7 +13,7 @@
     <article class="post-item">
       <a href="{{ .RelPermalink }}"><h2>{{ .Title }}</h2></a>
       <div class="post-meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}</div>
-      <p>{{ .Summary }}</p>
+      <p>{{ with .Params.description }}{{ . | htmlUnescape | truncate 150 "" }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 150 "" }}{{ end }}</p>
     </article>
     {{ end }}
   </div>

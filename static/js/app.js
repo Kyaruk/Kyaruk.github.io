@@ -286,5 +286,139 @@
   if (mq.addEventListener) mq.addEventListener('change', applyTheme);
   else if (mq.addListener) mq.addListener(applyTheme);
 
+  /* ===== 博客滑动画廊 ===== */
+  var MAX_DOTS = 7;
+
+  function initGalleries() {
+    var galleries = document.querySelectorAll('[data-gallery]');
+    for (var g = 0; g < galleries.length; g++) {
+      (function(gallery) {
+        var track = gallery.querySelector('.gallery-track');
+        var prev = gallery.querySelector('.gallery-prev');
+        var next = gallery.querySelector('.gallery-next');
+        var currentEl = gallery.querySelector('.gallery-current');
+        var totalEl = gallery.querySelector('.gallery-total');
+        var dotsContainer = gallery.querySelector('[data-dots]');
+        var items = gallery.querySelectorAll('.gallery-item');
+        if (!track || items.length === 0) return;
+
+        var count = items.length;
+        if (totalEl) totalEl.textContent = count;
+
+        /* 生成圆点 */
+        var dots = [];
+        if (dotsContainer) {
+          for (var d = 0; d < count; d++) {
+            var dot = document.createElement('button');
+            dot.className = 'gallery-dot';
+            dot.setAttribute('aria-label', '跳到第' + (d + 1) + '张');
+            (function(idx) {
+              dot.addEventListener('click', function() {
+                track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+              });
+            })(d);
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+          }
+        }
+
+        function getCurrentIndex() {
+          return Math.round(track.scrollLeft / track.clientWidth);
+        }
+
+        function updateDots(idx) {
+          if (!dotsContainer || dots.length === 0) return;
+          if (count <= MAX_DOTS) {
+            /* 全部显示 */
+            for (var i = 0; i < dots.length; i++) {
+              dots[i].classList.toggle('active', i === idx);
+              dots[i].style.display = '';
+            }
+          } else {
+            /* 滑动窗口：显示当前项附近的 MAX_DOTS 个 */
+            var half = Math.floor(MAX_DOTS / 2);
+            var start = Math.max(0, Math.min(idx - half, count - MAX_DOTS));
+            for (var j = 0; j < dots.length; j++) {
+              var visible = j >= start && j < start + MAX_DOTS;
+              dots[j].style.display = visible ? '' : 'none';
+              dots[j].classList.toggle('active', j === idx);
+            }
+          }
+        }
+
+        function updateNav() {
+          var idx = getCurrentIndex();
+          if (currentEl) currentEl.textContent = idx + 1;
+          if (prev) prev.toggleAttribute('disabled', idx <= 0);
+          if (next) next.toggleAttribute('disabled', idx >= count - 1);
+          updateDots(idx);
+          /* 只在第一张（实况照片）时显示"按住播放" */
+          var hint = gallery.querySelector('.live-hint');
+          if (hint) hint.classList.toggle('visible', idx === 0);
+        }
+
+        prev.addEventListener('click', function() {
+          track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+        });
+        next.addEventListener('click', function() {
+          track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+        });
+        track.addEventListener('scroll', updateNav);
+        updateNav();
+      })(galleries[g]);
+    }
+  }
+
+  initGalleries();
+
+  /* ===== 实况照片（Live Photo）：按住播放，松开停止 ===== */
+  function initLivePhotos() {
+    var lives = document.querySelectorAll('[data-live]');
+    for (var i = 0; i < lives.length; i++) {
+      (function(el) {
+        var video = el.querySelector('.live-video');
+        if (!video) return;
+
+        /* 将"按住播放"提示注入底部圆点条 */
+        var gallery = el.closest('[data-gallery]');
+        if (gallery) {
+          var bottom = gallery.querySelector('.gallery-bottom');
+          var hint = el.querySelector('.live-hint');
+          if (bottom && !bottom.querySelector('.live-hint')) {
+            var hintEl = document.createElement('span');
+            hintEl.className = 'live-hint';
+            hintEl.textContent = '按住播放';
+            bottom.querySelector('.gallery-dots').insertAdjacentElement('beforebegin', hintEl);
+          }
+          if (hint) hint.remove();
+        }
+
+        function play() {
+          video.play().then(function() {
+            el.classList.add('playing');
+            var h = el.closest('[data-gallery]').querySelector('.live-hint');
+            if (h) h.classList.add('playing');
+          }).catch(function(){});
+        }
+        function stop() {
+          video.pause();
+          video.currentTime = 0;
+          el.classList.remove('playing');
+          var h = el.closest('[data-gallery]').querySelector('.live-hint');
+          if (h) h.classList.remove('playing');
+        }
+
+        el.addEventListener('mousedown', function(e) { e.preventDefault(); play(); });
+        el.addEventListener('mouseup', stop);
+        el.addEventListener('mouseleave', stop);
+        el.addEventListener('touchstart', function(e) { e.preventDefault(); play(); }, {passive:false});
+        el.addEventListener('touchend', stop);
+        el.addEventListener('touchcancel', stop);
+      })(lives[i]);
+    }
+  }
+
+  initLivePhotos();
+
   applyLang();
 })();

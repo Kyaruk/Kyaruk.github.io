@@ -1,0 +1,46 @@
+{{/* 滑动画廊 shortcode
+  用法（图床 URL 模式）:
+  {{< gallery caption="描述文字" images="url1,url2,url3" >}}
+  可选: live="url" — 实况照片视频 URL，配合第一张静态图
+*/}}
+{{ $caption := .Get "caption" }}
+{{ $live := .Get "live" }}
+{{ $imagesStr := .Get "images" }}
+{{ $images := split $imagesStr "," }}
+{{ if $images }}
+<div class="post-gallery" data-gallery data-count="{{ len $images }}">
+  <div class="gallery-track">
+    {{ range $i, $url := $images }}
+    {{ $url = trim $url " " }}
+    <figure class="gallery-item">
+      {{ if and $live (eq $i 0) }}
+      <div class="live-photo" data-live>
+        <img class="live-static" src="{{ $url }}" alt="{{ $caption }} - {{ add $i 1 }}" loading="lazy" decoding="async">
+        <video class="live-video" muted playsinline preload="none" poster="{{ $url }}">
+          <source src="{{ $live }}" type="video/mp4">
+        </video>
+        <span class="live-badge">LIVE</span>
+      </div>
+      {{ else }}
+      <img src="{{ $url }}" alt="{{ $caption }} - {{ add $i 1 }}" loading="lazy" decoding="async">
+      {{ end }}
+    </figure>
+    {{ end }}
+  </div>
+  <button class="gallery-nav gallery-prev" type="button" aria-label="上一张" tabindex="-1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="gallery-nav gallery-next" type="button" aria-label="下一张" tabindex="-1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="gallery-bottom">
+    <div class="gallery-dots" data-dots></div>
+    <div class="gallery-indicator">
+      <span class="gallery-current">1</span>
+      <span class="gallery-sep">/</span>
+      <span class="gallery-total">{{ len $images }}</span>
+    </div>
+  </div>
+</div>
+{{ if $caption }}<p class="gallery-caption">{{ $caption }}</p>{{ end }}
+{{ end }}
