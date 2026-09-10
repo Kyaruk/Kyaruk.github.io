@@ -414,6 +414,29 @@ body{
 }
 .post-gallery:hover .live-hint.visible{opacity:1;}
 .live-hint.playing{opacity:0 !important;}
+
+/* ===== 博客详情页：跨平台发布链接 ===== */
+.post-crosspost-group{display:flex;flex-wrap:wrap;gap:.5rem .8rem;margin-top:.3rem;}
+.post-crosspost{
+  display:inline-flex;align-items:center;gap:.35rem;
+  text-decoration:none;
+  font-size:.85rem;color:var(--muted) !important;
+  transition:color .2s ease;
+}
+.post-crosspost:hover{color:var(--text);}
+.post-crosspost:hover .cp-badge{opacity:1;}
+.cp-badge{
+  color:#fff;font-size:.65rem;font-weight:700;
+  padding:.1rem .35rem;border-radius:999px;
+  letter-spacing:.02em;line-height:1.3;
+  opacity:.85;transition:opacity .2s ease;
+}
+.cp-xhs{background:#FF2442;}
+.cp-zhihu{background:#0084FF;}
+.cp-weibo{background:#E6162D;}
+.cp-x{background:#000;}
+.cp-bilibili{background:#FB7299;}
+.cp-moments{background:#07C160;}
 @media (max-width:768px){
   .gallery-nav{width:32px;height:32px;}
   .gallery-nav svg{width:16px;height:16px;}

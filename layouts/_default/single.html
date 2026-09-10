@@ -5,6 +5,46 @@
     <header class="post-header">
       <h1 class="post-title">{{ .Title }}</h1>
       <p class="post-meta-info">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}</p>
+      {{ if or .Params.xhs_link .Params.zhihu_link .Params.weibo_link .Params.x_link .Params.bilibili_link .Params.moments_link }}
+      <div class="post-crosspost-group">
+        {{ with .Params.xhs_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-xhs">小红书</span>
+          <span>同步发布于小红书</span>
+        </a>
+        {{ end }}
+        {{ with .Params.zhihu_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-zhihu">知乎</span>
+          <span>同步发布于知乎</span>
+        </a>
+        {{ end }}
+        {{ with .Params.weibo_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-weibo">微博</span>
+          <span>同步发布于微博</span>
+        </a>
+        {{ end }}
+        {{ with .Params.x_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-x">X</span>
+          <span>同步发布于 X</span>
+        </a>
+        {{ end }}
+        {{ with .Params.bilibili_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-bilibili">哔哩哔哩</span>
+          <span>同步发布于哔哩哔哩</span>
+        </a>
+        {{ end }}
+        {{ with .Params.moments_link }}
+        <a class="post-crosspost" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          <span class="cp-badge cp-moments">朋友圈</span>
+          <span>同步发布于朋友圈</span>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
     </header>
     <div class="post-body">{{ .Content }}</div>
   </article>

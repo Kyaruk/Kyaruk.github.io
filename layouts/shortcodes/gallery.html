@@ -16,7 +16,7 @@
       {{ if and $live (eq $i 0) }}
       <div class="live-photo" data-live>
         <img class="live-static" src="{{ $url }}" alt="{{ $caption }} - {{ add $i 1 }}" loading="lazy" decoding="async">
-        <video class="live-video" muted playsinline preload="none" poster="{{ $url }}">
+        <video class="live-video" muted playsinline preload="metadata" poster="{{ $url }}">
           <source src="{{ $live }}" type="video/mp4">
         </video>
         <span class="live-badge">LIVE</span>

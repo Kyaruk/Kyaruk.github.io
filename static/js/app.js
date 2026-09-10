@@ -416,6 +416,12 @@
         el.addEventListener('touchcancel', stop);
       })(lives[i]);
     }
+
+    /* 创建 hint 后触发一次 updateNav，让首屏 visible 正确 */
+    var tracks = document.querySelectorAll('[data-gallery] .gallery-track');
+    for (var t = 0; t < tracks.length; t++) {
+      tracks[t].dispatchEvent(new Event('scroll'));
+    }
   }
 
   initLivePhotos();
